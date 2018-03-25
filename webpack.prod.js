@@ -50,27 +50,19 @@ module.exports = {
             uglifyOptions: {
                 ecma: 8,
                 warnings: true,
-                mangle: false,
+                mangle: true,
                 compress: {
-                    dropDebugger: false,
-                    deadCode: false,
+                    dropDebugger: true,
+                    deadCode: true,
                 },
                 output: {
-                    beautify: true,
-                    width: 140,
+                    beautify: false,
                 }
             },
         })
     ],
-    devServer: {
-        stats: "normal",
-        open: true,
-        port: 3000,
-        compress: true
-    },
-    devtool: 'eval-source-map',
     output: {
-        filename: 'bundle.[chunkHash].js',
+        filename: '[name].[chunkHash].js',
         path: path.resolve(__dirname, 'dist')
     }
 }
