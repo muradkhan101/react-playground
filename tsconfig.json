@@ -14,9 +14,7 @@
         ],
         "jsxFactory": "React.createElement",
         "typeRoots": [
-            "./typings"
-        ],
-        "jsx": "react"
+            "./typings"        ]
     },
     "include": [
         "src/**/*.ts"

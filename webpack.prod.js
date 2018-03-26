@@ -28,7 +28,7 @@ module.exports = {
                 use: [
                     CssExtractPlugin.loader,
                     'css-loader',
-                    'scss-loader'
+                    'sass-loader'
                 ]
             }
         ]

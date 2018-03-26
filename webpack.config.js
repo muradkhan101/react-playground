@@ -3,12 +3,16 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
+
 const extractCss = new CssExtractPlugin({
     filename: './dist/assets/app.css'
 });
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: {
+        'main': './src/index.tsx',
+        'other': './src/other.tsx'
+    },
     module: {
         rules: [
             {
@@ -24,11 +28,11 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                include: [path.resolve(__dirname, 'src', 'assets', 'scss')],
+                include: /src/,
                 use: [
                     CssExtractPlugin.loader,
                     'css-loader',
-                    'scss-loader'
+                    'sass-loader',
                 ]
             }
         ]
@@ -36,10 +40,27 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
     },
+    optimization: {
+        splitChunks: {
+            chunks: "async",
+            name: true,
+            cacheGroups: {
+                default: {
+                    minChunks: 1,
+                    reuseExistingChunk: true
+                },
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "all"
+                }
+            }
+        }
+    },
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            template: 'index.html'
+            template: './src/index.html'
         }),
         new CssExtractPlugin({
             filename: '[name].[chunkHash].css',
@@ -66,7 +87,9 @@ module.exports = {
         stats: "normal",
         open: true,
         port: 3000,
-        compress: true
+        compress: true,
+        contentBase: path.join(__dirname, "dist"),
+        overlay: true
     },
     devtool: 'eval-source-map',
     output: {
