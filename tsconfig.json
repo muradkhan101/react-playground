@@ -10,8 +10,13 @@
         "moduleResolution": "node",
         "lib": [
             "es2017",
-            "dom"
-        ]
+            "dom",
+        ],
+        "jsxFactory": "React.createElement",
+        "typeRoots": [
+            "./typings"
+        ],
+        "jsx": "react"
     },
     "include": [
         "src/**/*.ts"

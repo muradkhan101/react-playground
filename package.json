@@ -4,12 +4,13 @@
   "description": "Testing build tools with React and component structures",
   "main": "index.js",
   "dependencies": {
+    "@types/react": "^16.0.41",
     "npm": "^5.8.0",
-    "redux": "^3.7.2",
-    "rxjs": "^5.5.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-redux": "^5.0.7"
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "rxjs": "^5.5.7"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
@@ -28,8 +29,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "buid:prod": "webpack -p",
+    "build:dev": "NODE_ENV=dev webpack --mode development --config=webpack.config.js",
+    "buid:prod": "NODE_ENV=prod webpack --mode production",
     "dev": "webpack-dev-server",
     "watch": "webpack --watch"
   },
