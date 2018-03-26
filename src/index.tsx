@@ -6,7 +6,7 @@ class Thing extends React.Component<{}, {}> {
         return <div>Pooooping</div>;
     }
 }
-if (process.env.NODE_ENV ==='dev') {
+if (process.env.NODE_ENV === 'dev') {
     console.log('DEV!');
 } else {
     console.log('NOT DEV');
