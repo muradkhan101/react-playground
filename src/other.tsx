@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import styled from 'react-emotion';
 import { env } from './environments/environment';
 
+import { YStyleComponent } from './Structure/YStyle';
 import './index.scss';
 
 const Div = styled('div') `
@@ -16,11 +17,11 @@ const Para = styled('p')`
 `;
 
 const App = () => (
-    <Div>
-        <Para>
-            Making stuff is fun!!!!
-        </Para>
-    </Div>
+    <YStyleComponent>
+        <Para> Making stuff is fun!!!! </Para>
+        <Para> This is another thing </Para>
+        <Para> The Last thing! </Para>
+    </YStyleComponent>
 );
 
 ReactDOM.render(<App />, document.getElementById('root'));
