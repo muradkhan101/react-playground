@@ -7,7 +7,7 @@ let promise: () => Promise<{[key: string]: React.ComponentClass}> = () => new Pr
 
 const LazyComponent = LazyLoader({
     load: () => promise(),
-    whileLoading: () => <h1>Give me a minute, I'm Loading!!!!</h1>,
+    whileLoading: (err) => err ? <h2>Something horrible happened!</h2> : <h1>Give me a minute, I'm Loading!!!!</h1>,
 });
 
 export class TestComponent extends React.Component {

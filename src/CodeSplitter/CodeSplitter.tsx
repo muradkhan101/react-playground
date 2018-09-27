@@ -2,7 +2,7 @@ import React from 'react';
 
 interface LazyLoaderInput {
     load: () => Promise<{[key: string]: React.ComponentClass}>;
-    whileLoading?: () => React.ReactNode;
+    whileLoading?: (err?: Error) => React.ReactNode;
     onError?: () => any;
 }
 
@@ -27,7 +27,7 @@ export const LazyLoader = (input: LazyLoaderInput) => {
         state = {
             loading: true,
             loaded: null as React.ComponentClass,
-            err: null
+            err: null as Error
         };
 
         private loadComponent() {
@@ -35,7 +35,7 @@ export const LazyLoader = (input: LazyLoaderInput) => {
                 .then(component => {
                     this.setState({
                         loading: false,
-                        loaded: component && component.__esModule ? component.default : component
+                        loaded: component && component.__esModule ? component.default : component,
                     });
                 }).catch(err => {
                     this.setState({
@@ -51,7 +51,7 @@ export const LazyLoader = (input: LazyLoaderInput) => {
         render() {
             if (this.state.loading || this.state.err) {
                 return opts.whileLoading
-                    ? opts.whileLoading()
+                    ? opts.whileLoading(this.state.err)
                     : null;
             } else if (this.state.loaded) {
                 let Component = this.state.loaded;
