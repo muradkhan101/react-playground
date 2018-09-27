@@ -1,8 +1,8 @@
 import React from 'react';
 import { LazyLoader } from '../CodeSplitter';
 
-let promise: () => Promise<{[key: string]: React.ReactNode}> = () => new Promise( (resolve, reject) => {
-    setTimeout(() => resolve(import('./LazyLoaded')), 2000);
+let promise: () => Promise<{[key: string]: React.ComponentClass}> = () => new Promise( (resolve, reject) => {
+    setTimeout(() => resolve(import(/* webpackChunkName: "LazyLoaded" */'./LazyLoaded').then((res: any) => res.LazyLoadedComponent)), 2000);
 });
 
 const LazyComponent = LazyLoader({
