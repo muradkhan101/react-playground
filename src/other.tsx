@@ -10,12 +10,17 @@ import { RouteChildComponent } from './Routing/RouteChild';
 const App = () => (
     <RouterComponent>
         <React.Fragment>
-            <RouteChildComponent color={'blue'} link={'/potato'} >1</RouteChildComponent>
+            <RouteChildComponent color={'blue'} link={'/potato'} >
+                <Link to={'./deep'}>Go Deep</Link>
+                <Link to={'../'}>Nested Up One</Link>
+                <RouteChildComponent color={'orange'} link={'deep'} >1</RouteChildComponent>
+            </RouteChildComponent>
             <RouteChildComponent color={'green'} link={'/grass'} >2</RouteChildComponent>
             <RouteChildComponent color={'orange'} link={'/orange'} >1</RouteChildComponent>
             <Link to={'/potato'}>Potato</Link>
             <Link to={'/grass'}>Grass</Link>
             <Link to={'/orange'}>Orange</Link>
+            <Link to={'../'}>Up One</Link>
         </React.Fragment>
     </RouterComponent>
 );

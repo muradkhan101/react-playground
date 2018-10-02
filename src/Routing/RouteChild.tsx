@@ -10,7 +10,7 @@ export class RouteChildComponent extends React.Component<Props> {
         let color = this.props.color || 'blue';
         let link = this.props.link;
         return <Route path={link}
-        render={ (match) =>
+        render={ ({match}) =>
             console.log(match) || <div style={{
                 background: color,
                 width: 200,
