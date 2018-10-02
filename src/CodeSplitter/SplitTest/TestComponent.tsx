@@ -6,7 +6,7 @@ let promise: () => Promise<{[key: string]: React.ComponentClass}> = () => new Pr
 });
 
 const LazyComponent = LazyLoader({
-    load: () => promise(),
+    load: () => import('./LazyLoaded'),
     whileLoading: (err) => err ? <h2>Something horrible happened!</h2> : <h1>Give me a minute, I'm Loading!!!!</h1>,
 });
 
