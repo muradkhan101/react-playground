@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import styled from 'react-emotion';
-import { env } from './environments/environment';
 
 import './index.scss';
 
@@ -12,10 +11,6 @@ const Para = styled('p')`
     color: #313131;
 `;
 
-const App = () => (
-    <Para>
-        Making stuff is fun!!!!
-    </Para>
-);
+const App = () => <Para>Making stuff is fun!!!!</Para>;
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
