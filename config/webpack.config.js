@@ -4,17 +4,17 @@ const commonConfig = require('./webpack.common');
 
 const devConfig = Object.assign({}, commonConfig, {
     devServer: {
-        stats: "normal",
-        port: 3000,
-        index: 'index.html',
-        publicPath: '/',
-        // compress: true,
-        // contentBase: path.join(__dirname, "../dist"),
-        overlay: true,
-        historyApiFallback: {
-            index: '/'
-        }
-    }
+		stats: 'normal',
+		port: 3000,
+		index: 'index.html',
+		publicPath: '/',
+		// compress: true,
+		// contentBase: path.join(__dirname, "../dist"),
+		overlay: true,
+		historyApiFallback: {
+			index: '/'
+		}
+	},
 });
 devConfig.plugins.push(new UglifyPlugin({
             include: /\.tsx?$/,

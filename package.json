@@ -38,10 +38,11 @@
     "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
+    "start": "npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "NODE_ENV=dev webpack --mode development --config=config/webpack.config.js",
     "build:prod": "NODE_ENV=prod webpack --mode production --config=config/webpack.prod.js",
-    "dev": "webpack-dev-server --color --progress",
+    "dev": "NODE_ENV=dev webpack-dev-server --color --progress --mode=development --hot --inline --config=config/webpack.config.js",
     "watch": "webpack --watch"
   },
   "repository": {
