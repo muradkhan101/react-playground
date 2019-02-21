@@ -1,16 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import styled from 'react-emotion';
+// import styled from 'react-emotion';
 
 import './index.scss';
-import Accordion from './Accordion';
+// import Accordion from './Accordion';
+import { InfiniteScroller } from './InfiniteScroll';
 
-const Para = styled('p')`
-    font-size: 48px;
-    font-family: 'Helvetica Neue', 'Franklin Gothic', sans-serif;
-    margin: 0 auto;
-    color: #313131;
-`;
+// const Para = styled('p')`
+//     font-size: 48px;
+//     font-family: 'Helvetica Neue', 'Franklin Gothic', sans-serif;
+//     margin: 0 auto;
+//     color: #313131;
+// `;
 
 class App extends React.Component {
     state = {
@@ -21,12 +22,9 @@ class App extends React.Component {
         console.log('IS OPEN', isOpen);
         return (
             <React.Fragment>
-                <button onClick={() => this.setState({ isOpen: !isOpen })}>Open / Close</button>
-                <Accordion isOpen={isOpen}>
-                    <h1>Accordian</h1>
-                    <Para>Accordian!!!</Para>
-                </Accordion>
-                )
+                <InfiniteScroller onScroll={() => console.log('SCROLLING')}>
+                    <div style={{ height: '150vh' }}>THINGY</div>
+                </InfiniteScroller>
             </React.Fragment>
         );
     }
